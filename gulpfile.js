@@ -13,7 +13,7 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test',['lint'],function(){
+gulp.task('test', function(){
     gulp.src(['tests/**/*.js','!./tests/hubs/expectedHubOutput.js'])
         .pipe(mocha({ reporter: 'spec' }));
 });
