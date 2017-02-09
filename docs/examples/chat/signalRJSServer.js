@@ -5,7 +5,7 @@ var EVENT_CONSTANTS = require('../../../lib/common/eventConstants');
 
 var signalR = SignalRJS();
 signalR.hub('chatHub',{
-	send : function(userName,message){
+	send : function(caller, userName,message){
 		this.clients.all.invoke('broadcast').withArgs([userName,message])
 		console.log('send:'+message);
 	}

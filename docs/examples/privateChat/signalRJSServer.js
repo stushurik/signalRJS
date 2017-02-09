@@ -8,11 +8,11 @@ var signalR = SignalRJS();
 var server = http.createServer();
 
 signalR.hub('chatHub',{
-	broadcast : function(fromUserName,message){
+	broadcast : function(caller, fromUserName,message){
 		this.clients.all.invoke('broadcast').withArgs([fromUserName,message])
 		console.log('broadcasting:'+message);
 	},
-	privateSend : function(fromUserName,toUserName,message){
+	privateSend : function(caller, fromUserName,toUserName,message){
 		this.clients.user(toUserName).invoke('onPrivateMessage').withArgs([fromUserName,message])
 		console.log('privateSend from('+fromUserName+') to('+toUserName+') message:'+message);
 	}
